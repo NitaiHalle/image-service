@@ -1,0 +1,50 @@
+﻿@model WebApplication2.Models.LogModel
+
+@{
+	ViewBag.Title = "LogView";
+}
+
+<h2>Logs</h2>
+<input type="text" id="typefilter" placeholder="search by type" />
+<button type="button" value="search" onclick="filterByType()" class="btn-default" title="enjoy in your search">search</button>
+<table class="table" id="logs table">
+	<tr>
+		<td width="35">
+			Type
+		</td>
+		<td>
+			Log
+		</td>
+	</tr>
+	@foreach (var item in Model.logsList)
+	{
+		<tr>
+			<th>@Html.DisplayName(item.Type)</th>
+			<th>@Html.DisplayName(item.Massage)</th>
+		</tr>
+	}
+
+
+</table>
+<script>
+	function filterByType() {
+		var input = document.getElementById("typefilter");
+		var inputfilter = input.value.toUpperCase().trim();
+		var logs = document.getElementById("logs table");
+		var row = logs.getElementsByTagName("tr");
+		var comp = inputfilter.localeCompare("");
+		for (var i = 0; i < row.length; i++) {
+			var currType = row[i].getElementsByTagName("th")[0];
+			if (currType) {
+				currType = currType.innerHTML.toUpperCase().trim();
+				var flag = currType.localeCompare(inputfilter);
+				if (flag == 0 || comp == 0) {
+					row[i].style.display = "";
+				} else {
+					row[i].style.display = "none";
+				}
+			}
+		}
+	}
+</script>
+

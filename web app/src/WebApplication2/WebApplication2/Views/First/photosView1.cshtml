@@ -1,0 +1,71 @@
+﻿@model IEnumerable<WebApplication2.Models.Photo>
+
+@{
+	ViewBag.Title = "photosView1";
+}
+
+<h2>photosView1</h2>
+<div class="thumbnail">
+	<img src="..\photos\Output\Thumbnails\2015\2\IMG-20180314-WA0009.jpg" class="img-circle" alt="NameOfPhoto" />
+	<img src="..\photos\Output\2015\2\IMG-20180314-WA0009.jpg" class="img-circle" alt="NameOfPhoto" />
+</div>
+<img src="..\OutputDir\Thumbnails\2017\9\IMG-20180318-WA0014.jpg" class="img-circle" alt="NameOfPhoto" />
+<img src="..\OutputDir\2017\9\IMG-20180318-WA0014.jpg" class="img-circle" alt="NameOfPhoto" />
+<img src="C:\Users\Nitai Halle\source\repos\WebApplication2\WebApplication2\photos\Output\2015\2\IMG-20180314-WA0009.jpg" class="img-circle" alt="NameOfPhoto" />
+
+<p>
+	@Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+	<tr>
+		<th>
+			@Html.DisplayNameFor(model => model.Path)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.tPath)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.rPath)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.tRPath)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.NameOfPhoto)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.Date)
+		</th>
+		<th></th>
+	</tr>
+
+	@foreach (var item in Model)
+	{
+		<tr>
+			<td>
+				@Html.DisplayFor(modelItem => item.Path)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.tPath)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.rPath)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.tRPath)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.NameOfPhoto)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.Date)
+			</td>
+			<td>
+				@Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+				@Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+				@Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+			</td>
+		</tr>
+	}
+
+</table>

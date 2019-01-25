@@ -1,0 +1,15 @@
+﻿@model WebApplication2.Models.Photo
+@{
+	ViewBag.Title = "ImageView";
+}
+
+<h2>ImageView</h2>
+<img src="@Model.rPath" alt=" @Model.NameOfPhoto" />
+<h3>
+	@Model.NameOfPhoto
+</h3>
+<h4>@Model.Date</h4>
+<form method="post">
+	<input type="submit" class="btn-danger" value="delete" formaction="DeleteImageView" />
+	<input type="text" name="p" hidden="hidden" value="@Model.tPath" />
+</form>

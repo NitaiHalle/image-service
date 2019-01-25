@@ -1,0 +1,57 @@
+﻿@model WebApplication2.Models.Config
+@{
+    ViewBag.Title = "Config";
+}
+
+<h2>Config</h2>
+<table class="table">
+	<tr>
+		<td>
+			Output Directory:
+		</td>
+		<td>
+			@Html.DisplayFor(model => model.OutputDir)
+		</td>
+	</tr>
+	<tr>
+		<td>
+			Source Name:
+		</td>
+		<td>
+			@Html.DisplayFor(model => model.SourceName)
+		</td>
+	</tr>
+	<tr>
+		<td>
+			Log Name:
+		</td>
+		<td>
+			@Html.DisplayFor(model => model.LogName)
+		</td>
+	</tr>
+	<tr>
+		<td>
+			Thumbnail:
+		</td>
+		<td>
+			@Html.DisplayFor(modelItem => Model.Thumbnail)
+		</td>
+	</tr>
+</table>
+<h3>
+	handlers:
+</h3>
+
+	@using (Html.BeginForm())
+	{
+		@Html.AntiForgeryToken();
+		if (Model.Handlers != null)
+		{
+			foreach (var item in Model.Handlers)
+			{
+				<input type="submit" formaction="removeHandler" formmethod="get" value="@Html.DisplayFor(modelItem => item)"  name="item"/>
+				
+			}
+		}
+	}
+

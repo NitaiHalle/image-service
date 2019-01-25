@@ -1,0 +1,28 @@
+﻿@model IEnumerable<WebApplication2.Models.Photo>
+
+@{
+	ViewBag.Title = "PhotosView";
+}
+<h2>Photos</h2>
+<div class="row">
+	@foreach (var item in Model)
+	{
+		<div class="column">
+			<div class="col-sm-6 col-md-4">
+				<div class="thumbnail">
+					<img src="@item.tRPath" class="img-circle" alt="@item.NameOfPhoto" />
+					<div class="caption">
+						<h3>@item.NameOfPhoto</h3>
+						<p>@item.Date</p>
+						<form method="post">
+							<input type="submit" class="btn-primary" value="view" formaction="ImageView"/>
+							<input type="submit" class="btn-danger" value="delete" formaction="DeleteImageView" />
+							<input type="text" name="p" hidden="hidden" value="@item.tPath" />
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	}
+</div>
+

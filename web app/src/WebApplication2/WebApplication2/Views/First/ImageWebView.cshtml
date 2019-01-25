@@ -1,0 +1,59 @@
+﻿@model WebApplication2.Models.ImageWeb
+@{
+	ViewBag.Title = "ImageWebView";
+}
+
+<h2>Image Web</h2>
+<div>
+	<hr />
+
+	<dl class="dl-horizontal">
+		<table class="table" style="color-interpolation-filters:linearRGB">
+
+			<tr>
+				<td>@Html.DisplayNameFor(model => model.Status): </td>
+				<td><p type="text" id="stat"</p></td>
+				<!--<td>@Html.Label(@ViewBag.Connected ? "connected" : "disconnected")</td>-->
+			</tr>
+			<tr>
+				<td>number of photos: </td>
+
+				<td type = "text" id="num" size ="14"/>
+			</tr>
+
+		</table>
+		<h3>student details</h3>
+		<table class="table">
+			<tr>
+				<th>
+					first name
+				</th>
+				<th>
+					last name
+				</th>
+				<th>
+					ID
+				</th>
+			</tr>
+			<tr>
+				<td>
+					@Html.DisplayFor(model => model.GetName)
+				</td>
+				<td>
+					@Html.DisplayFor(model => model.GetLastName)
+				</td>
+				<td>
+					@Html.DisplayFor(model => model.GetId)
+				</td>
+			</tr>
+		</table>
+	</dl>
+</div>
+<script>
+	$.get("@Url.Action("GetStatus")", null, function (info) {
+		$("#stat").text(info);
+	});
+	$.get("@Url.Action("GetNumOfPhotos")", null, function (info) {
+		$("#num").text(info);
+	});
+</script>
